@@ -1,5 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
-import 'package:firebase/SplashScreen/index.dart';
 import 'package:firebase/screens/match_list.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -15,30 +13,8 @@ Future<void> main() async {
   runApp(const MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({super.key});
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> {
-  FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
-
-  Future<void> _getData() async {
-    final match = await firebaseFirestore
-        .collection("football")
-        .get(); // Await the async operation
-    for (var doc in match.docs) {
-      print(doc.data().toString());
-    }
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _getData();
-  }
 
   @override
   Widget build(BuildContext context) {
