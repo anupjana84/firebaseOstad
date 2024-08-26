@@ -1,4 +1,5 @@
 import 'package:firebase/screens/match_list.dart';
+import 'package:firebase/services/firesbase_service.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart'; // This should import the generated file
@@ -9,8 +10,12 @@ Future<void> main() async {
     options: DefaultFirebaseOptions
         .currentPlatform, // This should be defined in firebase_options.dart
   );
-
+  await FirebaseNotificationService.instance.initialize();
   runApp(const MyApp());
+}
+
+extension on FirebaseNotificationService {
+  initialize() {}
 }
 
 class MyApp extends StatelessWidget {
